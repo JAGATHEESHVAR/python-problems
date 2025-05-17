@@ -1,0 +1,15 @@
+class Solution(object):
+    def isValidBST(self, root):
+        
+        def traversal(root,left,right):
+
+            if root ==None:
+
+                return True
+
+            if not(left<root.val<right):
+
+                return False
+
+            return traversal(root.left,left,root.val) and traversal(root.right,root.val,right)
+        return traversal(root,float("-inf"),float("inf"))
