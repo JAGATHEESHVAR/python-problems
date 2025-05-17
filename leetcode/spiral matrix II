@@ -1,0 +1,15 @@
+class Solution:
+    def generateMatrix(self, n):
+        ans = [[0]*n for _ in range(n)]
+        x = y = j = 0
+        dirs = [(0,1),(1,0),(0,-1),(-1,0)]
+        for i in range(1,n**2+1):
+            ans[x][y] = i
+            dx, dy = dirs[j]
+            if 0<=x+dx<=n-1 and 0<=y+dy<=n-1 and ans[x+dx][y+dy]==0:
+                x, y = x+dx, y+dy
+            else:
+                j = (j+1)%4
+                dx, dy = dirs[j]
+                x, y = x+dx, y+dy   
+        return ans
